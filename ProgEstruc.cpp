@@ -1,42 +1,43 @@
 #include<iostream>
 #include<conio.h>
+#include<string.h>
 using namespace std;
-struct info_direccion{
-    char direccion[30];
-    char ciudad[20];
-    char provincia[20];
-};
-struct empleado{
-    char nombre[20];
-    struct info_direccion dir_empleado;
-    double salario;
-}empleados[2];
-// double sirve para almacenar el salario del empleado haciendo uso de la estructura info_direccion
-int main(){
-for( int i=0; i<2; i++){
-    fflush(stdin); // Limpiar el buffer de entrada
-    cout<<"Digite su nombre: ";
-    cin.getline(empleados[i].nombre,20,'\n');
-    cout<<"Digite su direccion: ";
-    cin.getline(empleados[i].dir_empleado.direccion,30,'\n');
-    cout<<"Digite su ciudad: ";
-    cin.getline(empleados[i].dir_empleado.ciudad,20,'\n');
-    cout<<"Digite su provincia: ";
-    cin.getline(empleados[i].dir_empleado.provincia,20,'\n');
-    cout<<"Digite su salario: ";
-    cin>>empleados[i].salario;
-    cout<<"\n";
-   //cin.ignore(); // Limpiar el buffer de entrada
-}
-//imprimir los datos de los empleados
-for(int i=0;i<2;i++){
-    cout<<"Nombre: "<<empleados[i].nombre<<endl;
-    cout<<"Direccion: "<<empleados[i].dir_empleado.direccion<<endl;
-    cout<<"Ciudad: "<<empleados[i].dir_empleado.ciudad<<endl;
-    cout<<"Provincia: "<<empleados[i].dir_empleado.provincia<<endl;
-    cout<<"Salario: "<<empleados[i].salario<<endl;
-    cout<<"\n";
-}
-    getch ();
-    return 0;
-}
+/* Hacer una estructura llamada corredor, en la cual se tendran los siguientes campos: Nombre, edad, sexo, club; y pedir datos al usuario para un corredor. Ademaás asignarle una categoría de competición:
+ - Juvenil <= 18 años
+ - Señor <= 40 años
+ - Veterano <= 40 años
+ Posteriormente imprimir todos los datos del corredor, incluida su categoría de competición*/
+struct Corredor{
+    char Nombre[20];
+    int Edad;
+    char Sexo [10];
+    char Club [20];
+} Corr1;
+ int main(){
+char categoria[20];
+    cout<<"Nombre: "<<endl;
+    cin.getline(Corr1.Nombre,20,'\n');
+    cout<<"Edad: ";
+    cin>>Corr1.Edad;
+    fflush(stdin); // vaciar el baffle
+    cout<<"Sexo: ";
+    cin.getline(Corr1.Sexo,10,'\n');
+    cout<<"Club: ";
+    cin.getline(Corr1.Club,20,'\n');
+
+    if(Corr1.Edad <= 18){
+        strcpy(categoria,"Juvenil");
+    } else if(Corr1.Edad <=40){
+        strcpy(categoria,"Adulto");
+    } else {
+        strcpy(categoria,"Veterano");
+    }
+  cout<<"\n\nDatos del corredor: \n";
+  cout<<"Nombre del corredor: "<<Corr1.Nombre<<endl;
+  cout<<"Edad del corredor: "<<Corr1.Edad<<endl;
+  cout<<"Sexo del corredor: "<<Corr1.Sexo<<endl;
+  cout<<"Club asignado para el corredor: "<<Corr1.Club<<endl;
+  cout<<"Categoria asignada al corredor: "<<categoria;
+getch();
+return 0;
+ }
