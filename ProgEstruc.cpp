@@ -1,38 +1,45 @@
-/* Hacer un arreglo de estructura llamada atleta para N atletas que contenga los siguientes campos: nombre, país
-, numero_medallas. y devuelva los datos (Nombre, país) del atleta que ha ganado el mayor número de medallas.*/
- #include<iostream>
- #include<conio.h>
- using namespace std;
+/* Hacer 2 estructuras una llamada promedio que tendrá los siguientes campos:
+nota1, nota2, nota3; y otro llamada alumno que tendrá los siguientes miembros:
+nombre, sexo, edad; hacer que la estructura promedio este anidada en la estructura
+alumno, luego pedir todos los datos para un alummno, luego calcular su promedio, y por 
+ultimo imprimir todos sus datos incluidos el promedio*/
 
- struct atleta{
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+struct promedio{
+    float nota1;
+    float nota2;
+    float nota3;
+};
+struct Alumno{
     char nombre[20];
-    char pais[20];
-    int numero_medallas;
+    char sexo[10];
+    int edad;
+    struct promedio prom;
+}alumno1;
+int main(){
+float promedio_alumno;
+    cout<<"Digite su nombre: ";
+    cin.getline(alumno1.nombre,20,'\n');
+    cout<<"Digite su sexo: ";
+    cin.getline(alumno1.sexo,10,'\n');
+    cout<<"Digite su edad: ";
+    cin>>alumno1.edad;
 
- }atletas[100];
+    cout<<"\n.: Notas del Alumno: \n";
+    cout<<"Nota1: "; cin>>alumno1.prom.nota1;
+    cout<<"Nota2: "; cin>>alumno1.prom.nota2;
+    cout<<"Nota3: "; cin>>alumno1.prom.nota3;
 
- int main(){
-int nAtletas, mayor=0, pos;
+    promedio_alumno = (alumno1.prom.nota1+alumno1.prom.nota2+alumno1.prom.nota3)/3;
 
-cout<<"Digite el numero de atletas: ";
-cin>>nAtletas;
-
-for(int i=0; i < nAtletas;i++){
-    cout<<i+1<<". Digite su nombre: "; cin.getline(atletas[i].nombre,20,'\n');
-    cout<<i+1<<". Digite su País: "; cin.getline(atletas[i].pais,20,'\n');
-    cout<<i+1<<". Digite el numero de medallas: "; cin>>atletas.[i].numero_medallas;
-    cout<<"\n";
-
-    if(atletas[i].numero_medallas > mayor){
-        mayor = atletas[i].numero_medallas;
-        pod = i;
-    }
-}
-// Imprimieno los datos del mejor atleta
-cout<<"\n El ateleta con mayor numero de medallas es: \n";
-cout<<"Nombre: "<<atletas[pos].nombre<<endl;
-cout<<"País: "<<atletas[pos].pais<<endl;
-
+cout<<"\n Datos del alumno\n";
+cout<<"Nombre: "<<alumno1.nombre<<endl;
+cout<<"Sexo: "<<alumno1.sexo<<endl;
+cout<<"Edad: "<<alumno1.edad<<endl;
+cout<<"El promedio del alumno: "<<promedio_alumno<<endl;
 getch();
-    return 0;
- }
+return 0;
+}
