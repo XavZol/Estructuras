@@ -1,53 +1,41 @@
-/* Hacer N estructuras una llamada promedio que tendrá los siguientes campos:
-nota1, nota2, nota3; y otro llamada alumno que tendrá los siguientes miembros:
-nombre, sexo, edad; hacer que la estructura promedio este anidada en la estructura
-alumno, luego pedir todos los datos para un alummno, luego calcular su promedio, y por 
-ultimo imprimir todos sus datos incluidos el promedio*/
-
+/*Defina una estructura que indique el tiempo empleaod por un ciclista en una etapa, La estructura debe tener tres campos: horas
+minutos y segundos, Escriba un programa que dado n etapas calcule el tiempo total empleado en correr todas las etapas.*/
 #include<iostream>
 #include<conio.h>
 using namespace std;
-struct promedio{
-    float nota1;
-    float nota2;
-    float nota3;
-};
-struct Alumno{
-    char nombre[20];
-    char sexo[10];
-    int edad;
-    struct promedio prom;
-}alumno[100];
+struct Etapas{
+
+    int horas;
+    int minutos;
+    int segundos;
+
+}et[100];
+
 int main(){
-int numero_alumnos, posM;
-float promedio_alumno[100], mayor=0;
-cout<<"Digite el numero de alumnos: ";
-cin>>numero_alumnos;
+int n_etapas, horasT=0, minutosT=0, segundosT=0;
+cout<<"Digite el numero de etapas: "; cin>>n_etapas;
 
-for(int i=0; i<numero_alumnos; i++){
-    cin.ignore();
-    cout<<i+1<<". Digite su nombre: "; cin.getline(alumno[i].nombre,20,'\n');
-    cout<<i+1<<". Digite su sexo: "; cin.getline(alumno[i].sexo,10,'\n');
-    cout<<i+1<<". Digite su edad: "; cin>>alumno[i].edad;
-
-cout<<"\nSolicitamos las notas: \n";
-cout<<"Digite la primera nota: "; cin>>alumno[i].prom.nota1;
-cout<<"Digite la segunda nota: "; cin>>alumno[i].prom.nota2;
-cout<<"Digite la tercer nota: "; cin>>alumno[i].prom.nota3;
-//obtener el promedio del alumno
-promedio_alumno[i] = (alumno[i].prom.nota1+alumno[i].prom.nota2+alumno[i].prom.nota3)/3;
-
-if(promedio_alumno[i] > mayor ){
-    mayor = promedio_alumno[i];
-    posM = i;
+for(int i=0;i<n_etapas;i++){
+    cout<<"Horas: "; cin>>et[i].horas;
+    cout<<"Minutos: "; cin>>et[i].minutos;
+    cout<<"segundos: "; cin>>et[i].segundos;
+horasT = horasT + et[i].horas;
+minutosT = minutosT+ et[i].minutos;
+if(minutosT >= 60){
+    minutosT -= 60;
+    horasT++;
 }
+segundosT = segundosT + et[i].segundos;
+if(segundosT >= 60){
+    segundosT -= 60;
+    minutosT++;
 }
-cout<<"\n Mostrando datos del alumno con el mejor promedio\n"
-cout<<"Nombre: "<<alumno[posM].nombre<<endl;
-cout<<"Sexo: "<<alumno[posM].sexo<<endl;
-cout<<"Edad: "<<alumno[posM].edad<<endl;
-cout<<"Promedio: "<<promedio_alumno[posM]<<endl;
 
+cout<<"\n Tiempo total empleado en toda la carrera es \n";
+cout<<"Horas: "<<horasT<<endl;
+cout<<"Minutos: "<<minutosT<<endl;
+cout<<"Segundos: "<<segundosT<<endl;
+}
 getch();
-return 0;
+    return 0;
 }
